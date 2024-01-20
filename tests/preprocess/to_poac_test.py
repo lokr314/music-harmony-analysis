@@ -808,7 +808,8 @@ def test_voices_to_poac_and_bar_lines():
                         "acc": "none"
                     }
                 ],
-                "duration": Fraction(3, 20)
+                #"duration": Fraction(3, 20)
+                "duration": Fraction(1, 10)
             },
             {
                 "pitches": [
@@ -818,7 +819,8 @@ def test_voices_to_poac_and_bar_lines():
                         "acc": "none"
                     }
                 ],
-                "duration": Fraction(3, 20)
+                #"duration": Fraction(3, 20)
+                "duration": Fraction(1, 10)
             },
             {
                 "pitches": [
@@ -828,7 +830,8 @@ def test_voices_to_poac_and_bar_lines():
                         "acc": "none"
                     }
                 ],
-                "duration": Fraction(3, 20)
+                #"duration": Fraction(3, 20)
+                "duration": Fraction(1, 10)
             },
             {
                 "pitches": [
@@ -838,7 +841,8 @@ def test_voices_to_poac_and_bar_lines():
                         "acc": "none"
                     }
                 ],
-                "duration": Fraction(3, 20)
+                #"duration": Fraction(3, 20)
+                "duration": Fraction(1, 10)
             }
         ]
     ]
@@ -1097,13 +1101,15 @@ def test_voices_to_poac_and_bar_lines():
                 'pitches': [
                     {'pitch': 0, 'octave_pitch': 7, 'acc': 'none'},
                 ],
-                'duration': Fraction(3, 20)
+                #"duration": Fraction(3, 20)
+                "duration": Fraction(1, 10)
             },
             {
                 'pitches': [
                     {'pitch': 2, 'octave_pitch': 9, 'acc': 'none'},
                 ],
-                'duration': Fraction(9, 40)
+                #"duration": Fraction(9, 40)
+                "duration": Fraction(3, 20)
             },
             {
                 'pitches': [
@@ -1159,11 +1165,13 @@ def test_voices_to_poac_and_bar_lines():
         },
         {
             'type': 'bar_thin_thin',
-            'time': Fraction(3, 8)
+            #'time': Fraction(3, 8)
+            'time': Fraction(1, 4)
         },
         {
             'type': 'bar_right_repeat',
-            'time': Fraction(7, 8)
+            #'time': Fraction(7, 8)
+            'time': Fraction(3, 4)
         }
     ]
     assert voices_to_poac_and_bar_lines(voices, is_compound) == (expected_voices, expected_barlines)

@@ -6,7 +6,7 @@ from src.preprocess import get_line_end_time
 def calc_harmonies(voices, note_equal_function = lambda x, y: x == y):
     """
     Input:
-    - voices: a list of voices, where each voice is a list of Events, where each Event has a list of pitches and a duration.
+    - voices: a list of voices, where each voice is a list of Events, where each Event has a list of pitches and a duration. (All the voices of one line of music)
     
     The representation of a pitch is not specified here. It can be a pc_note, a pac_note, or any other representation of a pitch. ('pc' means pitch class, 'pac' means pitch and accidentals. )
     But for custom representations of pitches you have to provide a note_equal_function:
@@ -258,13 +258,19 @@ def calc_harmonies(voices, note_equal_function = lambda x, y: x == y):
         },
     ]
     """
+
+    if all(map(lambda voice: len(voice) == 0, voices)):
+        return [] 
+
+    print('voices:', voices)
     current_time = fractions.Fraction(0, 1)
     # a voice is a list of Events here, turn it to an dictionary, so we can add more fields to it.
     voices = list(map(lambda voice: {'events': voice}, voices))
 
     for voice in voices:
-        voice['current_event_index'] = 0
-        voice['time_of_next_event'] = voice['events'][voice['current_event_index']]['duration']
+        if voice['events']:
+            voice['current_event_index'] = 0
+            voice['time_of_next_event'] = voice['events'][voice['current_event_index']]['duration']
 	
     harmonies = [] # list of harmonies which are resulting by the simutaneous notes of all voices.
 	

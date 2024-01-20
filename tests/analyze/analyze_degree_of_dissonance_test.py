@@ -210,6 +210,10 @@ def test_calc_atonality_degree():
 
 
 def test_calc_degree_of_dissonance():
+
+    # indifference on pcset with exactly one element is still consonant
+    assert calc_degree_of_dissonance('ind.', [0]) == 'con'
+
     # indifference and rest
     assert calc_degree_of_dissonance('ind.', []) == 'ind.'
     assert calc_degree_of_dissonance('/', [2,4]) == '/'

@@ -68,7 +68,13 @@ def duration_to_fraction(duration, is_triplet = False, triplet_divisor = None, i
     7 | 7 notes in the time of n
     8 | 8 notes in the time of 3
     9 | 9 notes in the time of n
-    If the time signature is compound (6/8, 9/8, 12/8) then n is three, otherwise n is two.
+    If the time signature is compound (3/8, 6/8, 9/8, 12/8) then n is three, otherwise n is two.
+    ATTENTION: Because abcjs does not support this differentiation between compound and not compound time signatures, but uses 2 for n in compound time signatures, this functionality is commented out in the code below. Alignment to the lengths of the abcjs notes is more important for my use case.
+    Could be implemented in the future, if needed.
+    Then the following tests have to be changed:
+    tests/preprocess/test_duration.py::test_duration_to_fraction: test case 6,11
+    tests/preprocess/test_duration.py::test_durations_to_fractions: test case 6
+    tests/preprocess/to_poac_test.py::test_voices_to_poac_and_bar_lines: test case 7,8
 
 
     Konvertiert eine Notenlänge aus dem Format, welches von abcjs zurückgegeben wird, in ein Fraction-Objekt. Die Änderungen der Länge durch ntolen werden berücksichtigt.
@@ -81,12 +87,12 @@ def duration_to_fraction(duration, is_triplet = False, triplet_divisor = None, i
         elif triplet_divisor in [3,6]:
             n = 2
         elif triplet_divisor in [5,7,9]:
-            if is_compound is None:
-                raise Exception("Triplet divisor " + str(triplet_divisor) + " is not allowed without meter.")
-            if is_compound:
-                n = 3
-            else:
-                n = 2
+            #if is_compound is None:
+            #    raise Exception("Triplet divisor " + str(triplet_divisor) + " is not allowed without meter.")
+            #if is_compound:
+            #    n = 3
+            #else:
+            n = 2
         else:
             raise Exception("Triplet divisor must be in range 2-9. Got " + str(triplet_divisor) + ".")
         print("n: " + str(n))

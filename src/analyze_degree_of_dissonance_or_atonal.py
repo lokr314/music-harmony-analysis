@@ -27,9 +27,11 @@ def analyze_degree_of_dissonance_or_atonal(analysis):
 
     order of calculation:
     1. atonality
-    2. indifferent or rest
-    3. dissonance_degree.
+    2. pcset with exactly one pitch -> consonant
+    3. indifferent or rest
+    4. dissonance_degree.
     -> If the pcset is atonal and the harmonic state is indifferent, it will still be marked as atonal.
+    -> a pcset with exactly one pitch is consonant, even in an indifferent harmonic state. (Because it will surely be consonant in every key.)
     """
     for i in range(len(analysis)):
         analysis[i] = (analysis[i][0], analysis[i][1], analysis[i][2], degree_of_dissonance_or_atonal(analysis[i]))
@@ -58,9 +60,11 @@ def degree_of_dissonance_or_atonal(event_analysis):
 
     order of calculation:
     1. atonality
-    2. indifferent or rest
-    3. dissonance_degree.
+    2. pcset with exactly one pitch -> consonant
+    3. indifferent or rest
+    4. dissonance_degree.
     -> If the pcset is atonal and the harmonic state is indifferent, it will still be marked as atonal.
+    -> a pcset with exactly one pitch is consonant, even in an indifferent harmonic state. (Because it will surely be consonant in every key.)
     """
     pcset = event_analysis[0][0]
 
@@ -121,9 +125,13 @@ def calc_degree_of_dissonance(sauterian_formula, pcset):
     
     Output: String. The degree of dissonance for this event. Either "con", "fcon", "low", "mid", "high". Or "ind." or "/".
 
-    Calculates the degree of dissonance for the given sauterian formula, if sauterian formula is defined. If it is 'ind.' or '/', that value is returned as is.
+    Calculates the degree of dissonance from the given sauterian formula:
+    If the pcset has exactly on element, it is always consonant, even if the harmonic state is indifferent.
+    If sauterian_formula is defined. If sauterian_formula is 'ind.' or '/', this value is returned as is.
     Should only be used for tonal events without atonal pitches, because for atonal chords, the degree of dissonance is defined otherwise (see degree_of_dissonance_or_atonal) but it is not forbidden to analyze the tonal part of an atonal chord with this function.
     """
+    if len(pcset) == 1:
+        return 'con'
 
     if sauterian_formula == 'ind.' or sauterian_formula == '/':
         return sauterian_formula

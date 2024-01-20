@@ -6,6 +6,7 @@ from src.representation import to_analyze_representation
 from src.analyze_sauterian_formula import analyze_sauterian_formula
 from src.analyze_degree_of_dissonance_or_atonal import analyze_degree_of_dissonance_or_atonal
 
+
 def get_analyzed_abc_strings(truncated_lines):
     """
 	Input:
@@ -50,8 +51,8 @@ def get_analyzed_abc_strings(truncated_lines):
         analysis = analyze_degree_of_dissonance_or_atonal(analysis)
         
         analysis_abc_strings = analysis_to_abc_strings(analysis, pac_harmony_lines)
-        
-        return analysis_abc_strings, informations.extend(preprocess_infos), None
+
+        return analysis_abc_strings, informations + preprocess_infos, None
     
     except Exception as e:
         return '', informations, str(e) 

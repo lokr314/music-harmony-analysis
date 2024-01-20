@@ -34,14 +34,14 @@ def test_get_meter_multiple_staffs():
     assert get_meter(line)[0] == None
 
 def test_is_compound():
-    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': 3, 'den': 4}]}}]}
+    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': '3', 'den': '4'}]}}]}
     assert get_meter(line)[1] == False
 
-    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': 2, 'den': 8}]}}]}
+    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': '2', 'den': '8'}]}}]}
     assert get_meter(line)[1] == False
 
-    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': 3, 'den': 8}]}}]}
+    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': '3', 'den': '8'}]}}]}
     assert get_meter(line)[1] == True
 
-    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': 3, 'den': 32}]}}]}
+    line = {'staff': [{'meter': {'type': 'specified', 'value': [{'num': '3', 'den': '32'}]}}]}
     assert get_meter(line)[1] == True

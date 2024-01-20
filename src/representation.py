@@ -115,7 +115,7 @@ def pac_to_pc(pac):
 
     """
     return {
-        'pitches': list(map(pac_note_to_pc, pac['pitches'])),
+        'pitches': list(set(map(pac_note_to_pc, pac['pitches']))),
         'duration': pac['duration']
     }
 

@@ -37,6 +37,9 @@ def preprocess(lines):
 		if new_meter != None:
 			meter = new_meter
 			is_compound = new_is_compound
+
+		print('meter: ' + str(meter))
+		print('is_compound: ' + str(is_compound))
 			
 		staff_list = line['staff']
 		for j, staff in enumerate(staff_list): # ab hier das Äquivalent zur handle_staff-Methode
@@ -91,6 +94,9 @@ def accidental_resolution(voices, accidentals, barlines_with_time):
 	
 	Returns the given list of voices, but accidentals of a note in a bar now apply for all notes with the same octave_pitch after the note in the bar. The given key accidentals are applied, if there is no accidental in the bar for this pitch. 
 	"""
+
+	if all(map(lambda voice: len(voice) == 0, voices)):
+		return voices
 
 	current_time = Fraction(0, 1)
     # a voice is a list of poac-Events here, turn it to an dictionary, so we can add more fields to it.
@@ -424,7 +430,13 @@ def get_meter(line):
 	if not (first_staff['meter']['type'] == 'specified'):
 		return None, None
 	
+	print(first_staff['meter']['value'])
+	print(first_staff['meter']['value'][0]['num'] in [3,6,9,12,15,18,21,24])
+	print(first_staff['meter']['value'][0]['den'] in [8,16,32,64,128])
+
 	# Siehe https://abcnotation.com/wiki/abc:standard:v2.1#duplets_triplets_quadruplets_etc für die Verwendung von compound meter
-	is_compound = True if first_staff['meter']['value'][0]['num'] in [3,6,9,12,15,18] and first_staff['meter']['value'][0]['den'] in [8,16,32,64,128] else False
+	is_compound = True if int(first_staff['meter']['value'][0]['num']) in [3,6,9,12,15,18,21,24] and int(first_staff['meter']['value'][0]['den']) in [8,16,32,64,128] else False
+
+	print(is_compound)
 
 	return meter_to_fraction(first_staff['meter']), is_compound
