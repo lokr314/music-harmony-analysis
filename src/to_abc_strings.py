@@ -22,7 +22,7 @@ def analysis_to_abc_strings(analysis, harmony_lines, mode='pac', custom_pitch_to
     Output:
     - analysis_abc_strings: Dictionary with the following fields:
     - header: String. The header of the abc analysis: '\nL:1\n'.
-    - events: List of strings. Format: '[V: Analysis] [CE^^G]1/4 [C_EGB]1/4\n'. Each string represents the harmonies of one line of music.
+    - events: List of strings. Format: '[V: Analysis] [CE^^G]1/4 [C_EGB]1/4\n'. ('[V: Analysis name=Analysis snm=A.]' for the first line) Each string represents the harmonies of one line of music.
     - harmonic_states: List of strings. Format: 'w: [C,Cis,Dm] [C,Cis,Dm]\n'. Each string corresponds to the events of one line.
     - sauterian_formula: List of strings. Format: 'w: T15D15S3 D35S1A3,11\n'. Each string corresponds to the events of one line.
     - degree_of_dissonance_or_atonal: List of strings. Format: 'w: / low\n'. Each string corresponds to the events of one line. 
@@ -68,7 +68,7 @@ def analysis_to_abc_strings(analysis, harmony_lines, mode='pac', custom_pitch_to
     {
         "header": "\nL:1\n",
         "events": [
-            "[V: Analysis] [CEG]1/4 [CEG]1/4\n",
+            "[V: Analysis name=Analysis snm=A.] [CEG]1/4 [CEG]1/4\n",
             "[V: Analysis] [CEG]1/4 [CEG]1/4\n"
         ],
         "harmonic_states": [
@@ -95,9 +95,15 @@ def analysis_to_abc_strings(analysis, harmony_lines, mode='pac', custom_pitch_to
     	"degree_of_dissonance_or_atonal": []
     }
     
+    first_line = True
+
     for line in analysis_lines:
     
-        event_string = '[V: Analysis] '
+        if first_line:
+            first_line = False
+            event_string = '[V: Analysis name=Analysis snm=A.] '
+        else:
+            event_string = '[V: Analysis] '
         harmonic_states_string = 'w: '
         sauterian_formula_string = 'w: '
         degree_of_dissonance_or_atonal_string = 'w: '
@@ -156,7 +162,6 @@ def to_abc_strings_preprocess(analysis, harmony_lines):
     while True:
 
         if current_line_index < len(line_durations) and current_line_duration == line_durations[current_line_index]:
-            print(current_line)
             analysis_lines.append(current_line)
             current_line = []
             current_line_duration = 0
@@ -168,8 +173,6 @@ def to_abc_strings_preprocess(analysis, harmony_lines):
             break
 
         event, harmonic_state, sauterian_formula, degree_of_dissonance_or_atonal = analysis[i]
-        print(event)
-        print(harmony_lines[current_line_index][current_harmony_lines_index])
         current_line.append((harmony_lines[current_line_index][current_harmony_lines_index], harmonic_state, sauterian_formula, degree_of_dissonance_or_atonal))
         current_line_duration += event[1]
         current_harmony_lines_index += 1

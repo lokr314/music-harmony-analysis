@@ -36,8 +36,6 @@ def get_analyzed_abc_strings(truncated_lines):
 
         pac_harmony_lines = list(map(lambda line: calc_harmonies(line), lines_with_pac_voices))
 
-        print('pac_harmony_lines:', pac_harmony_lines)
-
         pac_music = [] # list of events
         for harmonies in pac_harmony_lines:
             pac_music.extend(harmonies)

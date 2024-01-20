@@ -262,7 +262,6 @@ def calc_harmonies(voices, note_equal_function = lambda x, y: x == y):
     if all(map(lambda voice: len(voice) == 0, voices)):
         return [] 
 
-    print('voices:', voices)
     current_time = fractions.Fraction(0, 1)
     # a voice is a list of Events here, turn it to an dictionary, so we can add more fields to it.
     voices = list(map(lambda voice: {'events': voice}, voices))

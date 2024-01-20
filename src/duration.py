@@ -69,7 +69,8 @@ def duration_to_fraction(duration, is_triplet = False, triplet_divisor = None, i
     8 | 8 notes in the time of 3
     9 | 9 notes in the time of n
     If the time signature is compound (3/8, 6/8, 9/8, 12/8) then n is three, otherwise n is two.
-    ATTENTION: Because abcjs does not support this differentiation between compound and not compound time signatures, but uses 2 for n in compound time signatures, this functionality is commented out in the code below. Alignment to the lengths of the abcjs notes is more important for my use case.
+    ATTENTION: Because abcjs does not support this differentiation between compound and not compound time signatures, but uses 2 for n even in compound time signatures, this functionality is commented out in the code below.
+    Alignment to the lengths of the abcjs notes is more important for my use case now.
     Could be implemented in the future, if needed.
     Then the following tests have to be changed:
     tests/preprocess/test_duration.py::test_duration_to_fraction: test case 6,11
@@ -95,7 +96,7 @@ def duration_to_fraction(duration, is_triplet = False, triplet_divisor = None, i
             n = 2
         else:
             raise Exception("Triplet divisor must be in range 2-9. Got " + str(triplet_divisor) + ".")
-        print("n: " + str(n))
+        
         return switch(duration) * n / triplet_divisor
     else:
         return switch(duration)

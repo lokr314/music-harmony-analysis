@@ -2,7 +2,6 @@ from typing import List, Tuple
 from fractions import Fraction
 
 def powerset(lst: List) -> List[List]:
-    print(lst)
     if not lst:
         return [[]]
     ps = powerset(lst[1:])

@@ -37,9 +37,6 @@ def preprocess(lines):
 		if new_meter != None:
 			meter = new_meter
 			is_compound = new_is_compound
-
-		print('meter: ' + str(meter))
-		print('is_compound: ' + str(is_compound))
 			
 		staff_list = line['staff']
 		for j, staff in enumerate(staff_list): # ab hier das Äquivalent zur handle_staff-Methode
@@ -108,12 +105,11 @@ def accidental_resolution(voices, accidentals, barlines_with_time):
 		voice['time_of_next_event'] = voice['events'][voice['current_event_index']]['duration']
 	
 	end_time = get_line_end_time([voice['events'] for voice in voices]) # This also checks for end_time consistency for each voice in the line. If not all end_times are equal, it throws an exception. 
-	print('end_time: ' + str(end_time))
+	
 	bar_accidentals = [] # List of objects, each with a 'octave_pitch' and a 'acc' field (sharp, flat, natural, none, ...)
 
 	while True:
 		
-		print('current_time: ' + str(current_time))
 		time_of_next_event = min(map(lambda voice: voice['time_of_next_event'], voices))
 
 		# Wenn ein neuer Takt beginnt, werden die accidentals aus dem vorherigen Takt gelöscht.
@@ -133,7 +129,7 @@ def accidental_resolution(voices, accidentals, barlines_with_time):
 			#    Füge dieses accidental mit dem octave_pitch der Note den für diesen Takt geltenden accidentals hinzu
 			if voice['current_time'] == current_time:
 				for pitch in voice['events'][voice['current_event_index']]['pitches']:
-					print(pitch)
+
 					if pitch['acc'] == 'none':
 						if pitch['octave_pitch'] in map(lambda x: x['octave_pitch'], bar_accidentals):
 							pitch['acc'] = list(filter(lambda x: x['octave_pitch'] == pitch['octave_pitch'], bar_accidentals))[0]['acc']
@@ -429,14 +425,8 @@ def get_meter(line):
   
 	if not (first_staff['meter']['type'] == 'specified'):
 		return None, None
-	
-	print(first_staff['meter']['value'])
-	print(first_staff['meter']['value'][0]['num'] in [3,6,9,12,15,18,21,24])
-	print(first_staff['meter']['value'][0]['den'] in [8,16,32,64,128])
 
 	# Siehe https://abcnotation.com/wiki/abc:standard:v2.1#duplets_triplets_quadruplets_etc für die Verwendung von compound meter
 	is_compound = True if int(first_staff['meter']['value'][0]['num']) in [3,6,9,12,15,18,21,24] and int(first_staff['meter']['value'][0]['den']) in [8,16,32,64,128] else False
-
-	print(is_compound)
 
 	return meter_to_fraction(first_staff['meter']), is_compound

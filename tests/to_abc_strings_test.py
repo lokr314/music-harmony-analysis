@@ -107,7 +107,7 @@ def test_analysis_to_abc_strings_pc_mode():
     expected_output = {
         "header": "\nL:1\nK:none\n",
         "events": [
-            "[V: Analysis] [C_EE]1/4 [CD^F]1/4\n",
+            "[V: Analysis name=Analysis snm=A.] [C_EE]1/4 [CD^F]1/4\n",
             "[V: Analysis] [C^CE]1/4 [C_BB]1/4\n"
         ],
         "harmonic_states": [
@@ -185,7 +185,7 @@ def test_analysis_to_abc_strings_pac_mode():
     expected_output = {
         "header": "\nL:1\nK:none\n",
         "events": [
-            "[V: Analysis] [^^CDG]511/16384 [CEB]3/1\n",
+            "[V: Analysis name=Analysis snm=A.] [^^CDG]511/16384 [CEB]3/1\n",
             "[V: Analysis] [CE_B]1/4 [CE^A]1/64\n"
         ],
         "harmonic_states": [
