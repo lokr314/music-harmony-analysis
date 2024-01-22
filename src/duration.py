@@ -1,4 +1,4 @@
-import fractions
+from fractions import Fraction
 
 
 def meter_to_fraction(meter):
@@ -9,7 +9,7 @@ def meter_to_fraction(meter):
     Output: Fraction. Der Wert von meter.
     """
     m = meter['value'][0]
-    return fractions.Fraction(int(m['num']), int(m['den']))
+    return Fraction(int(m['num']), int(m['den']))
 
 
 def voice_duration(voice):
@@ -18,7 +18,7 @@ def voice_duration(voice):
     - voice: List. Eine Liste von PAC-Events oder PC-Events oder custom-Events. Ein Event muss ein dictionary sein, welches ein 'duration'-Feld hat.
     Output: Fraction. Die Gesamtlänge aller Events in voice.
     """
-    time = fractions.Fraction(0, 1)
+    time = Fraction(0, 1)
     for event in voice:
         time += event['duration']
     return time
@@ -114,86 +114,86 @@ def switch(duration):
     Dies ermöglicht bessere Berechnungen mit den Notenlängen.
     Mit dieser Methode sollten alle möglichen Werte in einem von abcjs zurückgegebenen 'duration'-Feld abgedeckt sein.
     """
-    if duration == 2: return fractions.Fraction(2, 1) # Brevis
-    elif duration == 1: return fractions.Fraction(2, 2) # Ganze Note
-    elif duration == 0.5: return fractions.Fraction(2, 4) # Halbe Note
-    elif duration == 0.25: return fractions.Fraction(2, 8) # Viertelnote
-    elif duration == 0.125: return fractions.Fraction(2, 16) # Achtelnote
-    elif duration == 0.0625: return fractions.Fraction(2, 32) # Sechzehntelnote
-    elif duration == 0.03125: return fractions.Fraction(2, 64) # Zweiunddreißigstelnote
-    elif duration == 0.015625: return fractions.Fraction(2, 128) # Vierundsechzigstelnote
+    if duration == 2: return Fraction(2, 1) # Brevis
+    elif duration == 1: return Fraction(2, 2) # Ganze Note
+    elif duration == 0.5: return Fraction(2, 4) # Halbe Note
+    elif duration == 0.25: return Fraction(2, 8) # Viertelnote
+    elif duration == 0.125: return Fraction(2, 16) # Achtelnote
+    elif duration == 0.0625: return Fraction(2, 32) # Sechzehntelnote
+    elif duration == 0.03125: return Fraction(2, 64) # Zweiunddreißigstelnote
+    elif duration == 0.015625: return Fraction(2, 128) # Vierundsechzigstelnote
 
-    elif duration == 3: return fractions.Fraction(3, 1) # Brevis mit einem Punkt
-    elif duration == 1.5: return fractions.Fraction(3, 2) # Ganze Note mit einem Punkt
-    elif duration == 0.75: return fractions.Fraction(3, 4) # ...
-    elif duration == 0.375: return fractions.Fraction(3, 8)
-    elif duration == 0.1875: return fractions.Fraction(3, 16)
-    elif duration == 0.09375: return fractions.Fraction(3, 32)
-    elif duration == 0.046875: return fractions.Fraction(3, 64)
-    elif duration == 0.0234375: return fractions.Fraction(3, 128)
+    elif duration == 3: return Fraction(3, 1) # Brevis mit einem Punkt
+    elif duration == 1.5: return Fraction(3, 2) # Ganze Note mit einem Punkt
+    elif duration == 0.75: return Fraction(3, 4) # ...
+    elif duration == 0.375: return Fraction(3, 8)
+    elif duration == 0.1875: return Fraction(3, 16)
+    elif duration == 0.09375: return Fraction(3, 32)
+    elif duration == 0.046875: return Fraction(3, 64)
+    elif duration == 0.0234375: return Fraction(3, 128)
 
-    elif duration == 3.5: return fractions.Fraction(7, 2) # Brevis mit zwei Punkten
-    elif duration == 1.75: return fractions.Fraction(7, 4) # ...
-    elif duration == 0.875: return fractions.Fraction(7, 8)
-    elif duration == 0.4375: return fractions.Fraction(7, 16)
-    elif duration == 0.21875: return fractions.Fraction(7, 32)
-    elif duration == 0.109375: return fractions.Fraction(7, 64)
-    elif duration == 0.0546875: return fractions.Fraction(7, 128)
-    elif duration == 0.02734375: return fractions.Fraction(7, 256)
+    elif duration == 3.5: return Fraction(7, 2) # Brevis mit zwei Punkten
+    elif duration == 1.75: return Fraction(7, 4) # ...
+    elif duration == 0.875: return Fraction(7, 8)
+    elif duration == 0.4375: return Fraction(7, 16)
+    elif duration == 0.21875: return Fraction(7, 32)
+    elif duration == 0.109375: return Fraction(7, 64)
+    elif duration == 0.0546875: return Fraction(7, 128)
+    elif duration == 0.02734375: return Fraction(7, 256)
 
-    elif duration == 3.75: return fractions.Fraction(15, 4) # Brevis mit drei Punkten
-    elif duration == 1.875: return fractions.Fraction(15, 8) # ...
-    elif duration == 0.9375: return fractions.Fraction(15, 16)
-    elif duration == 0.46875: return fractions.Fraction(15, 32)
-    elif duration == 0.234375: return fractions.Fraction(15, 64)
-    elif duration == 0.1171875: return fractions.Fraction(15, 128)
-    elif duration == 0.05859375: return fractions.Fraction(15, 256)
-    elif duration == 0.029296875: return fractions.Fraction(15, 512)
+    elif duration == 3.75: return Fraction(15, 4) # Brevis mit drei Punkten
+    elif duration == 1.875: return Fraction(15, 8) # ...
+    elif duration == 0.9375: return Fraction(15, 16)
+    elif duration == 0.46875: return Fraction(15, 32)
+    elif duration == 0.234375: return Fraction(15, 64)
+    elif duration == 0.1171875: return Fraction(15, 128)
+    elif duration == 0.05859375: return Fraction(15, 256)
+    elif duration == 0.029296875: return Fraction(15, 512)
     
-    elif duration == 3.875: return fractions.Fraction(31, 8) # Brevis mit vier Punkten
-    elif duration == 1.9375: return fractions.Fraction(31, 16) # ...
-    elif duration == 0.96875: return fractions.Fraction(31, 32)
-    elif duration == 0.484375: return fractions.Fraction(31, 64)
-    elif duration == 0.2421875: return fractions.Fraction(31, 128)
-    elif duration == 0.12109375: return fractions.Fraction(31, 256)
-    elif duration == 0.060546875: return fractions.Fraction(31, 512)
-    elif duration == 0.0302734375: return fractions.Fraction(31, 1024)
+    elif duration == 3.875: return Fraction(31, 8) # Brevis mit vier Punkten
+    elif duration == 1.9375: return Fraction(31, 16) # ...
+    elif duration == 0.96875: return Fraction(31, 32)
+    elif duration == 0.484375: return Fraction(31, 64)
+    elif duration == 0.2421875: return Fraction(31, 128)
+    elif duration == 0.12109375: return Fraction(31, 256)
+    elif duration == 0.060546875: return Fraction(31, 512)
+    elif duration == 0.0302734375: return Fraction(31, 1024)
     
-    elif duration == 3.9375: return fractions.Fraction(63, 16) # Brevis mit fünf Punkten
-    elif duration == 1.96875: return fractions.Fraction(63, 32) # ...
-    elif duration == 0.984375: return fractions.Fraction(63, 64)
-    elif duration == 0.4921875: return fractions.Fraction(63, 128)
-    elif duration == 0.24609375: return fractions.Fraction(63, 256)
-    elif duration == 0.123046875: return fractions.Fraction(63, 512)
-    elif duration == 0.0615234375: return fractions.Fraction(63, 1024)
-    elif duration == 0.03076171875: return fractions.Fraction(63, 2048)
+    elif duration == 3.9375: return Fraction(63, 16) # Brevis mit fünf Punkten
+    elif duration == 1.96875: return Fraction(63, 32) # ...
+    elif duration == 0.984375: return Fraction(63, 64)
+    elif duration == 0.4921875: return Fraction(63, 128)
+    elif duration == 0.24609375: return Fraction(63, 256)
+    elif duration == 0.123046875: return Fraction(63, 512)
+    elif duration == 0.0615234375: return Fraction(63, 1024)
+    elif duration == 0.03076171875: return Fraction(63, 2048)
     
-    elif duration == 3.96875: return fractions.Fraction(127, 32) # Brevis mit sechs Punkten
-    elif duration == 1.984375: return fractions.Fraction(127, 64) # ...
-    elif duration == 0.9921875: return fractions.Fraction(127, 128)
-    elif duration == 0.49609375: return fractions.Fraction(127, 256)
-    elif duration == 0.248046875: return fractions.Fraction(127, 512)
-    elif duration == 0.1240234375: return fractions.Fraction(127, 1024)
-    elif duration == 0.06201171875: return fractions.Fraction(127, 2048)
-    elif duration == 0.031005859375: return fractions.Fraction(127, 4096)
+    elif duration == 3.96875: return Fraction(127, 32) # Brevis mit sechs Punkten
+    elif duration == 1.984375: return Fraction(127, 64) # ...
+    elif duration == 0.9921875: return Fraction(127, 128)
+    elif duration == 0.49609375: return Fraction(127, 256)
+    elif duration == 0.248046875: return Fraction(127, 512)
+    elif duration == 0.1240234375: return Fraction(127, 1024)
+    elif duration == 0.06201171875: return Fraction(127, 2048)
+    elif duration == 0.031005859375: return Fraction(127, 4096)
     
-    elif duration == 3.984375: return fractions.Fraction(255, 64) # Brevis mit sieben Punkten
-    elif duration == 1.9921875: return fractions.Fraction(255, 128) # ...
-    elif duration == 0.99609375: return fractions.Fraction(255, 256)
-    elif duration == 0.498046875: return fractions.Fraction(255, 512)
-    elif duration == 0.2490234375: return fractions.Fraction(255, 1024)
-    elif duration == 0.12451171875: return fractions.Fraction(255, 2048)
-    elif duration == 0.062255859375: return fractions.Fraction(255, 4096)
-    elif duration == 0.0311279296875: return fractions.Fraction(255, 8192)
+    elif duration == 3.984375: return Fraction(255, 64) # Brevis mit sieben Punkten
+    elif duration == 1.9921875: return Fraction(255, 128) # ...
+    elif duration == 0.99609375: return Fraction(255, 256)
+    elif duration == 0.498046875: return Fraction(255, 512)
+    elif duration == 0.2490234375: return Fraction(255, 1024)
+    elif duration == 0.12451171875: return Fraction(255, 2048)
+    elif duration == 0.062255859375: return Fraction(255, 4096)
+    elif duration == 0.0311279296875: return Fraction(255, 8192)
     
-    elif duration == 3.9921875: return fractions.Fraction(511, 128) # Brevis mit acht Punkten
-    elif duration == 1.99609375: return fractions.Fraction(511, 256) # ...
-    elif duration == 0.998046875: return fractions.Fraction(511, 512)
-    elif duration == 0.4990234375: return fractions.Fraction(511, 1024)
-    elif duration == 0.24951171875: return fractions.Fraction(511, 2048)
-    elif duration == 0.124755859375: return fractions.Fraction(511, 4096)
-    elif duration == 0.0623779296875: return fractions.Fraction(511, 8192)
-    elif duration == 0.03118896484375: return fractions.Fraction(511, 16384)
+    elif duration == 3.9921875: return Fraction(511, 128) # Brevis mit acht Punkten
+    elif duration == 1.99609375: return Fraction(511, 256) # ...
+    elif duration == 0.998046875: return Fraction(511, 512)
+    elif duration == 0.4990234375: return Fraction(511, 1024)
+    elif duration == 0.24951171875: return Fraction(511, 2048)
+    elif duration == 0.124755859375: return Fraction(511, 4096)
+    elif duration == 0.0623779296875: return Fraction(511, 8192)
+    elif duration == 0.03118896484375: return Fraction(511, 16384)
     
     else:
         raise Exception("Could not find specified note length: " + str(duration) + """\nMaybe you have used a disallowed muliplier after a note? Allowed mulipliers are:
