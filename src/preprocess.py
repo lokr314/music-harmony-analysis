@@ -2,8 +2,8 @@ import itertools
 from fractions import Fraction
 import copy
 
-from src.representation import abcjs_name_to_pac_pitch
-from src.duration import durations_to_fractions, meter_to_fraction
+from representation import abcjs_name_to_pac_pitch
+from duration import durations_to_fractions, meter_to_fraction
 
 
 def preprocess(lines):

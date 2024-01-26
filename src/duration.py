@@ -198,8 +198,8 @@ def switch(duration):
     else:
         raise Exception("Could not find specified note length: " + str(duration) + """\nMaybe you have used a disallowed muliplier after a note? Allowed mulipliers are:
 
-[L=1 oder kleiner]: 1,2,3
-[L=1/2 ...]: zusätzlich 4,6,7
+[L=1 or smaller]: 1,2,3
+[L=1/2 ...]: additionaly 4,6,7
 [L=1/4]: + 8,12,14,15
 [L=1/8]: + 16,24,28,30,31
 [L=1/16]: + 32,48,56,60,62,63
@@ -207,7 +207,7 @@ def switch(duration):
 [L=1/64]: + 128,192,224,240,248,252,254,255
 [L=1/128]: + 256,384,448,480,496,504,508,510,511
 
-Als Divisoren sind nur erlaubt:2,4,8,16,32,64, in seltenen Fällen auch 128, wenn man von einer Brevis-Note ausgeht.
+The only divisors allowed are: 2,4,8,16,32,64, in rare cases also 128 for a Brevis note.
 
-Man kann Multiplikatoren und Divisoren kombinieren, um z.B. eine 64tel mit 8 Punkten zu bekommen:
+You can combine multipliers and divisors to get, for example, a 64th with 8 points:
 [L=1/128] a511/128""")

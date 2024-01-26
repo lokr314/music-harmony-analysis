@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "music-harmony-analysis"
-version = "1.0.0"
+version = "1.0.1"
 description = "Analyze the harmonies in music according to a theory of harmonic perception by Franz Sauter, described in his book 'Tonal music: Anatomy of the Musical Aesthetics'"
 readme = "README.md"
 authors = [{ name = "Louis Krüger", email = "louiskrueger2002@gmail.com" }]

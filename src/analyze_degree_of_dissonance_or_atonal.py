@@ -1,4 +1,4 @@
-from src.type import key_to_pcset, all_keys 
+from type import key_to_pcset, all_keys 
 
 def analyze_degree_of_dissonance_or_atonal(analysis):
     """

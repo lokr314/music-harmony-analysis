@@ -1,6 +1,6 @@
-from src.duration import voice_duration
-from src.type import show_key
-from src.representation import pacset_equal
+from duration import voice_duration
+from type import show_key
+from representation import pacset_equal
 
 
 def analysis_to_abc_strings(analysis, harmony_lines, mode='pac', custom_pitch_to_abc_method=None):

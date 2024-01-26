@@ -1,4 +1,4 @@
-from src.type import key_to_pcset
+from type import key_to_pcset
 
 def analyze_sauterian_formula(analysis):
     """

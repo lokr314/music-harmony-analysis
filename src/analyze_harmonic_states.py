@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-from src.type import Key, HarmonicState, HarmonicAnalysis, Music, PCSet, all_keys, key_to_pcset
+from type import Key, HarmonicState, HarmonicAnalysis, Music, PCSet, all_keys, key_to_pcset
 
 
 # Function to analyze music and return HarmonicAnalysis

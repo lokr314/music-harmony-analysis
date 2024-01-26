@@ -1,10 +1,10 @@
-from src.analyze_harmonic_states import analyze_harmonic_states
-from src.calc_harmonies import calc_harmonies
-from src.preprocess import preprocess
-from src.to_abc_strings import analysis_to_abc_strings
-from src.representation import to_analyze_representation
-from src.analyze_sauterian_formula import analyze_sauterian_formula
-from src.analyze_degree_of_dissonance_or_atonal import analyze_degree_of_dissonance_or_atonal
+from analyze_harmonic_states import analyze_harmonic_states
+from calc_harmonies import calc_harmonies
+from preprocess import preprocess
+from to_abc_strings import analysis_to_abc_strings
+from representation import to_analyze_representation
+from analyze_sauterian_formula import analyze_sauterian_formula
+from analyze_degree_of_dissonance_or_atonal import analyze_degree_of_dissonance_or_atonal
 
 
 def get_analyzed_abc_strings(truncated_lines):

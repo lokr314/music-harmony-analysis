@@ -1,6 +1,6 @@
 from fractions import Fraction
 
-from src.preprocess import get_line_end_time
+from preprocess import get_line_end_time
 
 
 def calc_harmonies(voices, note_equal_function = lambda x, y: x == y):
@@ -18,7 +18,7 @@ def calc_harmonies(voices, note_equal_function = lambda x, y: x == y):
     The PAC-Representation is useful if the resulting harmonies should be displayed as classical notes (like in abcjs), where enharmonic notes are displayed as different notes.
 
     Output: Depending on Input-Event-Representation:
-    voices of Events: One voice: a list of Events with the same representation as the input events.
+    voice of Events: One voice: a list of Events with the same representation as the input events.
 
     This function gets multiple voices and calculates the resulting harmonies, and the duration of these harmonies.
     Each time a note or rest in one voice starts, a new harmony is created.

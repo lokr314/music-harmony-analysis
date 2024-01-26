@@ -1,3 +1,40 @@
+Metadata-Version: 2.1
+Name: music-harmony-analysis
+Version: 1.0.1
+Summary: Analyze the harmonies in music according to a theory of harmonic perception by Franz Sauter, described in his book 'Tonal music: Anatomy of the Musical Aesthetics'
+Author-email: Louis Krüger <louiskrueger2002@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2024 Louis Krüger
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+Project-URL: Homepage, https://notenentwickler.com
+Keywords: music,music harmony,music analysis,music theory
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+
 This library implements some functions for analyzing the harmonic happenings in music. The algorithms are based on a relatively unknown theory of harmony in music by Franz Sauter, specified for implementation by Louis Krüger. This Theory is described in the book of Franz Sauter 'Tonal music: Anatomy of the Musical Aesthetics' (German: 'Die tonale Musik: Anatomie der musikalischen Ästhetik').
 One interesting aspect of the theory is that modulations are defined in a way that it can be implemented in a computer program: A modulation occurs if we hear a tone which is not part of the key in which we were before. Instead, we are modulating to the key which
 1. has all the tones of the new harmony we are hearing and

@@ -1,7 +1,7 @@
 
 """
 A musical "Event" is defined here as an object with pitches and a musical duration. This can model a note (one object in the pitches list), a chord (multiple pitches) and a rest (empty pitches list), each with a specified length.
-It is implemented a dict with the following keys:
+It is implemented as a dict with the following keys:
     - pitches: a list of representations of a pitch. pac_notes or pc_notes for example (see below). 
     - duration: Fraction
 	
