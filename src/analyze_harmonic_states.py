@@ -4,7 +4,7 @@ from type import Key, HarmonicState, HarmonicAnalysis, Music, PCSet, all_keys, k
 
 
 # Function to analyze music and return HarmonicAnalysis
-def analyze_harmonic_states(m: Music) -> HarmonicAnalysis:
+def analyze_harmonic_states(m: Music, start_harmonic_state = all_keys) -> HarmonicAnalysis:
     """
     Input:
     - m: Music, a list of tuples (pcset, duration), where pcset is a List of pitchclasses, where pitchclass is a int in range 0-11 and duration is a Fraction object. duration is not used in this function, but is part the return value.
@@ -29,7 +29,7 @@ def analyze_harmonic_states(m: Music) -> HarmonicAnalysis:
         (([2, 7, 11], Fraction(1, 4)), [(7, 'dur')])
     ]
     """
-    return _analyze_harmonic_states(m, all_keys)
+    return _analyze_harmonic_states(m, start_harmonic_state)
 
 
 def _analyze_harmonic_states(m: Music, old_harmonic_state: HarmonicState) -> HarmonicAnalysis:

@@ -48,10 +48,69 @@ def show_key(key: Key) -> str:
 def show_harmonic_state(keys: HarmonicState) -> str:
     if not keys:
         return "[]"
+    if set(keys) == set(all_keys):
+        return '[All]'
     return "[" + ", ".join([show_key(key) for key in keys]) + "]"
 
 def show_harmonic_states(states: List[HarmonicState]) -> str:
     return "".join([show_harmonic_state(state) for state in states])
+
+def parse_key(key_str: str) -> tuple:
+    """
+    Parses a string representation of a Key into a tuple (pitchclass, mode).
+
+    Input:
+    - key_str: A string in the format 'C', 'Cis', 'Am', 'Bm', 'Bb', etc.
+
+    Output:
+    - A tuple (pitchclass, mode), where:
+      - pitchclass: int (0-11) representing the pitch class
+      - mode: str, either 'dur' for major or 'moll' for minor
+
+    Example:
+    - 'C' -> (0, 'dur')
+    - 'Cis' -> (1, 'dur')
+    - 'Cism' -> (1, 'moll')
+    - 'Bb' -> (10, 'dur')
+    - 'Bm' -> (11, 'moll')
+    """
+    notes = ['C', 'Cis', 'D', 'Es', 'E', 'F', 'Fis', 'G', 'As', 'A', 'Bb', 'B']
+    if key_str.endswith('m'):  # Minor key
+        note_str = key_str[:-1]
+        mode = 'moll'
+    else:  # Major key
+        note_str = key_str
+        mode = 'dur'
+    
+    pitchclass = notes.index(note_str)
+    return (pitchclass, mode)
+
+def parse_harmonic_state(state_str: str) -> list:
+    """
+    Parses a string representation of a HarmonicState into a list of Keys.
+
+    Input:
+    - state_str: A string in one of the following formats:
+      - '[]' for an empty state
+      - '[All]' for a state containing all keys
+      - '[C, Cis, Am, Bb]' for specific keys
+
+    Output:
+    - A list of Keys (tuples), where each Key is (pitchclass, mode).
+
+    Example:
+    - '[]' -> []
+    - '[All]' -> all_keys
+    - '[C, Am, Bb]' -> [(0, 'dur'), (9, 'moll'), (10, 'dur')]
+    """
+    if state_str == '[]':
+        return []
+    if state_str == '[All]':
+        return list(all_keys)
+    
+    # Remove brackets and split the string into individual keys
+    key_strings = state_str[1:-1].split(', ')
+    return [parse_key(key_str) for key_str in key_strings]
 
 def key_to_pcset(key: Key) -> PCSet:
     n, mode = key

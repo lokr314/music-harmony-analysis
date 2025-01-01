@@ -1,5 +1,5 @@
 from duration import voice_duration
-from type import show_key
+from type import show_key, all_keys
 from representation import pacset_equal
 
 
@@ -289,7 +289,9 @@ def harmonic_state_to_abc_string(harmonic_state, old_harmonic_state):
     - old_harmonic_state: List of keys: (pitchclass, mode).
     
     Output:
-    '_', if the harmonic state is the same as the old harmonic state. Else:
+    '_', if the harmonic state is the same as the old harmonic state.
+    '[All]' if the harmonic state is the state containing all 24 keys.
+    Else:
     The harmonic_state as a string in the format '[key1,key2,key3,...]~ '.
     
     Example:

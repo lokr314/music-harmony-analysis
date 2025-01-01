@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
-Name: music-harmony-analysis
-Version: 1.0.1
+Name: music_harmony_analysis
+Version: 1.1.1
 Summary: Analyze the harmonies in music according to a theory of harmonic perception by Franz Sauter, described in his book 'Tonal music: Anatomy of the Musical Aesthetics'
 Author-email: Louis Krüger <louiskrueger2002@gmail.com>
 License: MIT License
